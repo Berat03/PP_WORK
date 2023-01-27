@@ -4,30 +4,31 @@
 #include "langton.h"
 #include "visualiser.h"
 
-// Refactor this so do I am not repeating code
 int main(int argc,  char *argv[]){
-    if(argv[1]){ //check the input
+    if(argv[1]){ //if we have an input
         char input_rules[] = "LR";
         if (strspn(argv[1], input_rules) != strlen(argv[1])) { //True if invalid input, close program
             printf("Invalid input\n"); //do `I print this?
-            return 0;
+            return 1;
         }
 
         struct rule general_rule;
+        struct rule * general_rule_p;
         general_rule.rules = malloc(sizeof(char) * (strlen(argv[1]) + 1));
         if (general_rule.rules == NULL) { // if malloc fails
-            printf("Error: malloc() failed.\n"); //do `I print this?
-            return 1; //failed, so do I return 0 or 1?
+            printf("Error: malloc() failed.\n");
+            return 1;
         }
         strcpy(general_rule.rules, argv[1]);
-
+        general_rule_p = &general_rule;
         // do general version here
         struct ant *antp;
         struct ant bob;
         antp = &bob;
+
         start_visualisation(antp);
         while (not_quit())
-            visualise_and_advance(antp);
+            visualise_and_advance_general(antp, general_rule_p);
         end_visualisation();
         free(general_rule.rules);
         return 0;

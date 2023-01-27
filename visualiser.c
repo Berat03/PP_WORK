@@ -31,6 +31,28 @@ void cell_at_fct(struct ant *ant){
         ant -> y = 0;
     }
 }
+char colours[] = {' ', 'A', 'B', 'C', 'D'};
+
+void visualise_and_advance_general(struct ant* ant, struct rule* rule) {
+    /* Draw cells and ant */
+    for (int y=0; y<max_y; y++){
+        for (int x=0; x<max_x; x++){
+            mvprintw(y,x,
+                     ant_is_at(y,x)
+                     ? direction_to_s(ant->direction)
+                     : cell_at(y,x)
+                       ? "1"
+                       : " "
+            );
+        }
+    }
+    refresh();
+
+    /* Advance to next step */
+    apply_rule_general(&cell_under_ant, ant, rule);
+    move_forward(ant);
+    cell_at_fct(ant);
+}
 
 void visualise_and_advance(struct ant* ant) {
     /* Draw cells and ant */
@@ -41,7 +63,7 @@ void visualise_and_advance(struct ant* ant) {
                      ? direction_to_s(ant->direction)
                      : cell_at(y,x)
                        ? "1"
-                       : "0"
+                       : " "
             );
         }
     }
