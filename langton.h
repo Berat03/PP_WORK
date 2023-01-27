@@ -19,6 +19,9 @@ extern char *passed_rule;
 enum colour { WHITE, BLACK };
 enum colour_gen {A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z};
 
+extern char* colourNames[];
+
+
 void turn_left(struct ant *ant); //! DONE
 void turn_right(struct ant *ant); //! DONE
 void move_forward(struct ant *ant); //! DONE

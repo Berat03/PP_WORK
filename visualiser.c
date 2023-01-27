@@ -40,9 +40,7 @@ void visualise_and_advance_general(struct ant* ant, struct rule* rule) {
             mvprintw(y,x,
                      ant_is_at(y,x)
                      ? direction_to_s(ant->direction)
-                     : cell_at(y,x)
-                       ? "1"
-                       : " "
+                     : colourNames[cell_at(y,x)]
             );
         }
     }
