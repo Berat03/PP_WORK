@@ -1,5 +1,4 @@
 #include "langton.h"
-#include "visualiser.h"
 #include <stdio.h>
 #include <string.h>
 
