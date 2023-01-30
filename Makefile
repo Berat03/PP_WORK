@@ -1,4 +1,4 @@
-#CC = gcc
+$CC = gcc
 
 all: main.c library
 	gcc -L main.c  -lant.so -lncursesw -o ant
