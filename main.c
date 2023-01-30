@@ -12,7 +12,6 @@ int main(int argc,  char *argv[]){
     if(argv[1]){ //if we have an input
         char input_rules[] = "LR";
         if (strspn(argv[1], input_rules) != strlen(argv[1])) { //True if invalid input
-            printf("zeros?");
             printf("Invalid input\n"); //do `I print this?
             return 1;
         }
