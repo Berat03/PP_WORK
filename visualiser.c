@@ -31,7 +31,7 @@ void cell_at_fct(struct ant *ant){
         ant -> y = 0;
     }
 }
-char colours[] = {' ', 'A', 'B', 'C', 'D'};
+char colours[] = {' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 
 void visualise_and_advance_general(struct ant* ant, struct rule* rule) {
     /* Draw cells and ant */
