@@ -17,7 +17,7 @@ extern char *passed_rule;
 #define ant_is_at(posy, posx) (ant->x == posx && ant->y == posy)
 
 enum colour { WHITE, BLACK };
-enum colour_gen {A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z};
+//enum colour_gen {A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z};
 
 extern char* colourNames[];
 
