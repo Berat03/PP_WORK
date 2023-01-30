@@ -41,6 +41,5 @@ int main(int argc,  char *argv[]){
     while (not_quit())
         visualise_and_advance(antp);
     end_visualisation();
-    printf("zeros?");
     return 0;
 }
