@@ -7,6 +7,9 @@
 #define cell_under_ant cell_at(ant->y, ant->x)
 cell *cells;
 
+static int max_x;
+static int max_y;
+
 void start_visualisation(struct ant* ant) {
     setlocale(LC_ALL, "");
     initscr();
@@ -59,10 +62,7 @@ void visualise_and_advance(struct ant* ant) {
             mvprintw(y,x,
                      ant_is_at(y,x)
                      ? direction_to_s(ant->direction)
-                     : cell_at(y,x)
-                       ? "1"
-                       : " "
-            );
+                     : cell_at(y,x) ? "1": " ");
         }
     }
     refresh();
