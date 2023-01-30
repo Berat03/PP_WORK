@@ -68,7 +68,8 @@ void apply_rule(enum colour *colour, struct ant *ant) {
 
     }
 }
-char* colourNames[] = { " ", "A", "B", "C", "D", "E", "F" };
+char* colourNames[] = { " ", "A", "B", "C", "D",
+                        "E", "F", "G", "H", "I",};
 
 void apply_rule_general(enum colour *colour_gen, struct ant *ant, struct rule *rule) {
     int rule_len = strlen(rule->rules);
