@@ -34,9 +34,8 @@ int main(int argc,  char *argv[]){
         free(general_rule.rules);
         return 0;
     }
-    // if no input
-    // base rule if none are passed in
 
+    // if no input (base LR rule)
     start_visualisation(antp);
     while (not_quit())
         visualise_and_advance(antp);
