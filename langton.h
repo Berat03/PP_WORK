@@ -12,7 +12,6 @@ struct ant {
 struct rule {
     char* rules;
 };
-extern char *passed_rule;
 
 #define ant_is_at(posy, posx) (ant->x == posx && ant->y == posy)
 
