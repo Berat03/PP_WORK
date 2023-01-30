@@ -5,9 +5,9 @@
 #include "visualiser.h"
 
 int main(int argc,  char *argv[]){
-    struct ant *antp;
+    struct ant *ant_p;
     struct ant bob;
-    antp = &bob;
+    ant_p = &bob;
 
     if(argv[1]){ //if we have an input
         char input_rules[] = "LR";
@@ -27,18 +27,18 @@ int main(int argc,  char *argv[]){
         general_rule_p = &general_rule;
 
         // general version here
-        start_visualisation(antp);
+        start_visualisation(ant_p);
         while (not_quit())
-            visualise_and_advance_general(antp, general_rule_p);
+            visualise_and_advance_general(ant_p, general_rule_p);
         end_visualisation();
         free(general_rule.rules);
         return 0;
     }
 
     // if no input (base LR rule)
-    start_visualisation(antp);
+    start_visualisation(ant_p);
     while (not_quit())
-        visualise_and_advance(antp);
+        visualise_and_advance(ant_p);
     end_visualisation();
     return 0;
 }
