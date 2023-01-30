@@ -31,6 +31,8 @@ void cell_at_fct(struct ant *ant){
         ant -> y = 0;
     }
 }
+// created a general version of visualise and advance instead of checking each iteration
+// if the version was the basic or advanced
 void visualise_and_advance_general(struct ant* ant, struct rule* rule) {
     /* Draw cells and ant */
     for (int y=0; y<max_y; y++){
