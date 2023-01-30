@@ -5,9 +5,14 @@
 #include "visualiser.h"
 
 int main(int argc,  char *argv[]){
+    struct ant *antp;
+    struct ant bob;
+    antp = &bob;
+
     if(argv[1]){ //if we have an input
         char input_rules[] = "LR";
-        if (strspn(argv[1], input_rules) != strlen(argv[1])) { //True if invalid input, close program
+        if (strspn(argv[1], input_rules) != strlen(argv[1])) { //True if invalid input
+            printf("zeros?");
             printf("Invalid input\n"); //do `I print this?
             return 1;
         }
@@ -21,11 +26,8 @@ int main(int argc,  char *argv[]){
         }
         strcpy(general_rule.rules, argv[1]);
         general_rule_p = &general_rule;
-        // do general version here
-        struct ant *antp;
-        struct ant bob;
-        antp = &bob;
 
+        // general version here
         start_visualisation(antp);
         while (not_quit())
             visualise_and_advance_general(antp, general_rule_p);
@@ -35,12 +37,11 @@ int main(int argc,  char *argv[]){
     }
     // if no input
     // base rule if none are passed in
-    struct ant *antp;
-    struct ant bob;
-    antp = &bob;
+
     start_visualisation(antp);
     while (not_quit())
         visualise_and_advance(antp);
     end_visualisation();
+    printf("zeros?");
     return 0;
 }
