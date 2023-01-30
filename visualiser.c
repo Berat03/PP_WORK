@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "visualiser.h" // this way we acn access max_x and max_y
 
-#define cell_at(y, x) cells[(y * max_x) + x]
+#define cell_at(y, x) cells[(((y) * max_x) + (x))]
 #define cell_under_ant cell_at(ant->y, ant->x)
 cell *cells;
 
@@ -31,8 +31,8 @@ void cell_at_fct(struct ant *ant){
         ant -> y = 0;
     }
 }
-// created a general version of visualise and advance instead of checking each iteration
-// if the version was the basic or advanced
+// created a general version of visualise and advance instead of checking if each iteration the version was the basic or advanced
+//
 void visualise_and_advance_general(struct ant* ant, struct rule* rule) {
     /* Draw cells and ant */
     for (int y=0; y<max_y; y++){
@@ -40,7 +40,7 @@ void visualise_and_advance_general(struct ant* ant, struct rule* rule) {
             mvprintw(y,x,
                      ant_is_at(y,x)
                      ? direction_to_s(ant->direction)
-                     : colourNames[cell_at(y,x)]
+                     : colourNames[cell_at(y,x)] //
             );
         }
     }
@@ -73,7 +73,7 @@ void visualise_and_advance(struct ant* ant) {
     cell_at_fct(ant);
 }
 
-// max_x and max_y are 0 outside the scope of this file??
+// max_x and max_y are 0 outside the scope of this file
 bool not_quit() {
     return 'q' != getch();
 }
