@@ -1,6 +1,7 @@
 #include "langton.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 void turn_left(struct ant *ant) {
     switch(ant->direction){
@@ -89,6 +90,7 @@ void apply_rule_general(enum colour *colour, struct ant *ant, struct rule *rule)
             }
             break;
         default:
-            printf("An error has occurred with applying the rule.");
+            printf("An error has occurred- the conditions for accepting rule inputs has changed from LR.");
+            exit(EXIT_FAILURE); // as this is a void function, we can't just return a 1
     }
 }
