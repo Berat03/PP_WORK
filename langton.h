@@ -13,17 +13,15 @@ struct rule {
     char* rules;
 };
 
-#define ant_is_at(posy, posx) (ant->x == posx && ant->y == posy)
+#define ant_is_at(posy, posx) ((ant->x == (posx)) && (ant->y == (posy))) //! DONE
 
 enum colour { WHITE, BLACK };
-
 extern char* colourNames[];
-
 
 void turn_left(struct ant *ant); //! DONE
 void turn_right(struct ant *ant); //! DONE
 void move_forward(struct ant *ant); //! DONE
 
 void apply_rule(enum colour *colour, struct ant *ant); //! DONE
-void apply_rule_general(enum colour *colour, struct ant *ant, struct rule *rule);
+void apply_rule_general(enum colour *colour, struct ant *ant, struct rule *rule); //! DONE
 #endif
