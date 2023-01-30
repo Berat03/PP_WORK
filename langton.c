@@ -68,7 +68,7 @@ void apply_rule(enum colour *colour, struct ant *ant) {
 
     }
 }
-char* colourNames[] = { " ", "A", "B", "C", "D","E", "F", "G", "H", "I", "J", "K", "L", "M", "O", "P", "Q"};
+char* colourNames[] = { " ", "A", "B", "C", "D","E", "F", "G", "H", "I", "J", "K", "L", "M", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "£", "$", "%", "&", "*"};
 
 void apply_rule_general(enum colour *colour_gen, struct ant *ant, struct rule *rule) {
     int rule_len;
@@ -92,6 +92,5 @@ void apply_rule_general(enum colour *colour_gen, struct ant *ant, struct rule *r
             break;
         default:
             printf("An error has occurred with applying the rule.");
-            exit(1); // as return 1 does not work because it is a void type function
     }
 }
