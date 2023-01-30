@@ -8,9 +8,9 @@ struct ant {
     int y;
     enum direction direction;
 };
-
+// could use @out@  to get rid of some linting however I'm not too sure if allowed
 struct rule {
-    char* rules;
+    /*@out@*/ char* rules;
 };
 
 #define ant_is_at(posy, posx) ((ant->x == (posx)) && (ant->y == (posy))) //! DONE
