@@ -38,7 +38,6 @@ void turn_right(struct ant *ant) {
 }
 
 void move_forward(struct ant *ant){
-    printf("%d",max_x);
     switch(ant->direction) {
         case UP:
             ant -> y -=  1;
