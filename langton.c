@@ -74,8 +74,8 @@ void apply_rule_general(enum colour *colour_gen, struct ant *ant, struct rule *r
     int rule_len;
     rule_len = (int) strlen(rule->rules);
     int value = *colour_gen;
-    char individualRule = (rule->rules)[value]; // can refactor later
-    switch (individualRule) { // why is this red??????
+    char individualRule = (rule->rules)[value];
+    switch (individualRule) {
         case 'L':
             turn_left(ant);
             *colour_gen = *colour_gen + 1;
