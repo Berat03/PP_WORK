@@ -70,24 +70,24 @@ void apply_rule(enum colour *colour, struct ant *ant) {
 }
 char* colourNames[] = { " ", "A", "B", "C", "D","E", "F", "G", "H", "I", "J", "K", "L", "M", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "£", "$", "%", "&", "*"};
 
-void apply_rule_general(enum colour *colour_gen, struct ant *ant, struct rule *rule) {
+void apply_rule_general(enum colour *colour, struct ant *ant, struct rule *rule) {
     int rule_len;
     rule_len = (int) strlen(rule->rules);
-    int value = *colour_gen;
+    int value = *colour;
     char individualRule = (rule->rules)[value];
     switch (individualRule) {
         case 'L':
             turn_left(ant);
-            *colour_gen = *colour_gen + 1;
-            if (*colour_gen >= rule_len){
-                *colour_gen = 0;
+            *colour = *colour + 1;
+            if (*colour >= rule_len){
+                *colour = 0;
             }
             break;
         case 'R':
             turn_right(ant);
-            *colour_gen = *colour_gen + 1;
-            if (*colour_gen >= rule_len){
-                *colour_gen = 0;
+            *colour = *colour + 1;
+            if (*colour >= rule_len){
+                *colour = 0;
             }
             break;
         default:
