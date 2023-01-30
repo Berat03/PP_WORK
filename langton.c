@@ -68,11 +68,11 @@ void apply_rule(enum colour *colour, struct ant *ant) {
 
     }
 }
-char* colourNames[] = { " ", "A", "B", "C", "D",
-                        "E", "F", "G", "H", "I",};
+char* colourNames[] = { " ", "A", "B", "C", "D","E", "F", "G", "H", "I", "J", "K", "L", "M", "O", "P", "Q"};
 
 void apply_rule_general(enum colour *colour_gen, struct ant *ant, struct rule *rule) {
-    int rule_len = strlen(rule->rules);
+    int rule_len;
+    rule_len = (int) strlen(rule->rules);
     int value = *colour_gen;
     char individualRule = (rule->rules)[value]; // can refactor later
     switch (individualRule) { // why is this red??????
@@ -90,5 +90,8 @@ void apply_rule_general(enum colour *colour_gen, struct ant *ant, struct rule *r
                 *colour_gen = 0;
             }
             break;
+        default:
+            printf("An error has occurred with applying the rule.");
+            exit(1); // as return 1 does not work because it is a void type function
     }
 }
