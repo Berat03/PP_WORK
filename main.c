@@ -4,9 +4,13 @@
 #include "langton.h"
 #include "visualiser.h"
 
-int main(int argc,  char *argv[]){
+int main(/*@unused@*/ int argc,  char *argv[]){
+    struct ant bob = { // just to define varaible
+            .x = 0,
+            .y = 0,
+            .direction = RIGHT
+    };
     struct ant *ant_p;
-    struct ant bob;
     ant_p = &bob;
     // use argv[1] so that is user inputs two rules or any second input (separate by a space) it will only read the original rule
     if(argv[1]){ //if we have an input
@@ -16,13 +20,13 @@ int main(int argc,  char *argv[]){
             return 1;
         }
         struct rule general_rule;
-        struct rule * general_rule_p;
         general_rule.rules = malloc(sizeof(char) * (strlen(argv[1]) + 1)); //Allocating memory w.r.t length of rule
         if (general_rule.rules == NULL) { // if malloc fails general_rule.rules will return NULL
             printf("Error: malloc() failed.\n");
             return 1;
         }
         strcpy(general_rule.rules, argv[1]);
+        struct rule * general_rule_p;
         general_rule_p = &general_rule;
 
         // general version
