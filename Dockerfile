@@ -3,5 +3,5 @@ COPY  . /app
 WORKDIR /app
 RUN apt-get update
 RUN apt-get install -y make gcc libncurses-dev gdb splint
-RUN gcc main.c visualiser.c langton.c -lncurses -o ant
+RUN gcc main.c visualiser.c langton.c -lncursesw -o ant
 
