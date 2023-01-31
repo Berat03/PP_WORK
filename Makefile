@@ -1,10 +1,9 @@
 CC = gcc
 
-# unclear instructions, am I meant to have makefile actually run or only create the executable, and does the makefile take rule?
 all: main.c library
 	$(CC) main.c -L. -lant -lncursesw -Wl,-rpath=. -o ant
 	./ant LRRL
-# if I changed the last line of all: to  './ant $(variant)', then the user could input rules doing 'make all variant="LRLLRLRRL"'
+# if I changed the last line of all: to  './ant $(variant)', user can input rules doing 'make all variant="LRLRRL"'
 # I removed this feature as according to the FAQ questions we need to run a pre-picked variant of the game
 library: langton.c visualiser.c
 	$(CC) -c -fPIC langton.c -o langton.o
