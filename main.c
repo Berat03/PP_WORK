@@ -6,12 +6,8 @@
 
 
 int main(/*@unused@*/ int argc, char *argv[]) {
-    // just to define variable
-    struct ant bob = {
-            .x = 0,
-            .y = 0,
-            .direction = RIGHT
-    };
+    // just to initialise a non-empty variable
+    struct ant bob;
     struct ant *ant_p;
     ant_p = &bob;
     // argv[1] only takes the first argument from user

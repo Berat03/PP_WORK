@@ -4,12 +4,12 @@
 enum direction { UP, DOWN, LEFT, RIGHT };
 
 struct ant {
-    int x;
-    int y;
-    enum direction direction;
+    /*@out@*/ int x;
+    /*@out@*/ int y;
+    /*@out@*/ enum direction direction;
 };
 
-// noy sure if using @out@ is allowed, but it should affect testing
+// noy sure if using @out@ is allowed, but it should not affect testing
 struct rule {
     /*@out@*/ char* rules;
 };
