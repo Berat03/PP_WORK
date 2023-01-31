@@ -4,8 +4,6 @@
 #include "langton.h"
 #include <stdbool.h>
 
-static int max_x;
-static int max_y;
 
 typedef enum colour cell;
 
