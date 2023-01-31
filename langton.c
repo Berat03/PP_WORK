@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 void turn_left(struct ant *ant) {
-    switch(ant->direction){
+    switch (ant->direction) {
         case UP:
             ant -> direction = LEFT;
             break;
@@ -21,7 +21,7 @@ void turn_left(struct ant *ant) {
 }
 
 void turn_right(struct ant *ant) {
-    switch(ant->direction){
+    switch (ant->direction) {
         case UP:
             ant -> direction = RIGHT;
             break;
@@ -37,8 +37,8 @@ void turn_right(struct ant *ant) {
     }
 }
 
-void move_forward(struct ant *ant){
-    switch(ant->direction) {
+void move_forward(struct ant *ant) {
+    switch (ant->direction) {
         case UP:
             ant -> y -=  1;
             break;
@@ -60,15 +60,16 @@ void apply_rule(enum colour *colour, struct ant *ant) {
             turn_left(ant);
             *colour = BLACK;
             break;
+
         case BLACK:
             turn_right(ant);
             *colour = WHITE;
             break;
-
     }
 }
-char* colourNames[] = { " ", "A", "B", "C", "D","E", "F", "G", "H", "I", "J", "K", "L", "M", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "£", "$", "%", "&", "*"};
-// only use list to represent symbols, not the actual integer value of cell which uses enum.
+
+char* colourNames[] = {" ", "A", "B", "C", "D","E", "F", "G", "H", "I", "J", "K", "L", "M", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "£", "$", "%", "&", "*"};
+// list represents symbols, not the integer value of cell which uses enum.
 void apply_rule_general(enum colour *colour, struct ant *ant, struct rule *rule) {
     int rule_len;
     rule_len = (int) strlen(rule->rules);
@@ -78,19 +79,20 @@ void apply_rule_general(enum colour *colour, struct ant *ant, struct rule *rule)
         case 'L':
             turn_left(ant);
             *colour = *colour + 1;
-            if (*colour >= rule_len){
+            if (*colour >= rule_len) {
                 *colour = 0;
             }
             break;
         case 'R':
             turn_right(ant);
             *colour = *colour + 1;
-            if (*colour >= rule_len){
+            if (*colour >= rule_len) {
                 *colour = 0;
             }
             break;
         default:
-            printf("An error has occurred- the conditions for accepting rule inputs has changed from LR.");
-            exit(EXIT_FAILURE); // as this is a void function, we can't just return a 1
+            printf("An error with applying the LR rules");
+            exit(EXIT_FAILURE);
+            // this is a void function - we can't return 1 as usual
     }
 }

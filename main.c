@@ -4,24 +4,33 @@
 #include "langton.h"
 #include "visualiser.h"
 
-int main(/*@unused@*/ int argc,  char *argv[]){
-    struct ant bob = { // just to define varaible
+
+int main(/*@unused@*/ int argc, char *argv[]) {
+    // just to define variable
+    struct ant bob = {
             .x = 0,
             .y = 0,
             .direction = RIGHT
     };
     struct ant *ant_p;
     ant_p = &bob;
-    // use argv[1] so that is user inputs two rules or any second input (separate by a space) it will only read the original rule
-    if(argv[1]){ //if we have an input
+    // argv[1] only takes the first argument from user
+
+    // argv[1] will be TRUE if we have any input, so we need the check
+    if (argv[1]) {
         char input_rules[] = "LR";
-        if (strspn(argv[1], input_rules) != strlen(argv[1])) { //TRUE if invalid input
+
+        // TRUE if invalid input
+        if (strspn(argv[1], input_rules) != strlen(argv[1])) {
             printf("Invalid input\n");
             return 1;
         }
         struct rule general_rule;
-        general_rule.rules = malloc(sizeof(char) * (strlen(argv[1]) + 1)); //Allocating memory w.r.t length of rule
-        if (general_rule.rules == NULL) { // if malloc fails general_rule.rules will return NULL
+        general_rule.rules = malloc(sizeof(char) * (strlen(argv[1]) + 1));
+
+
+        // if malloc fails general_rule.rules will return NULL
+        if (general_rule.rules == NULL) {
             printf("Error: malloc() failed.\n");
             return 1;
         }
@@ -29,16 +38,16 @@ int main(/*@unused@*/ int argc,  char *argv[]){
         struct rule * general_rule_p;
         general_rule_p = &general_rule;
 
-        // general version
+        // Advanced version loop including freeing malloc memory
         start_visualisation(ant_p);
         while (not_quit())
             visualise_and_advance_general(ant_p, general_rule_p);
-        end_visualisation(); // could not have to repeat this code using if else, but better readability*
-        free(general_rule.rules); // to ensure no memory leak
+        end_visualisation();
+        free(general_rule.rules);
         return 0;
     }
+    // if no input, we run the basic version with rule LR
 
-    // if no input (base LR rule)
     start_visualisation(ant_p);
     while (not_quit())
         visualise_and_advance(ant_p);

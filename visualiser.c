@@ -1,7 +1,7 @@
 #include <ncurses.h>
 #include <locale.h>
 #include <stdlib.h>
-#include "visualiser.h" // this way we acn access max_x and max_y
+#include "visualiser.h"   // this way we acn access max_x and max_y
 
 #define cell_at(y, x) cells[(((y) * max_x) + (x))]
 #define cell_under_ant cell_at(ant->y, ant->x)
@@ -22,29 +22,26 @@ void start_visualisation(struct ant* ant) {
     ant->direction = RIGHT;
 }
 
-void cell_at_fct(struct ant *ant){
-    if(ant -> x < 0){
+void cell_at_fct(struct ant *ant) {
+    if (ant -> x < 0) {
         ant -> x = (max_x - 1);
-    }
-    else if(ant -> x >= max_x){
+    } else
+        if (ant -> x >= max_x) {
         ant -> x = 0;
-    } else if(ant -> y < 0){
+    } else
+        if (ant -> y < 0) {
         ant -> y = (max_y - 1);
-    } else if (ant -> y >= max_y){
+    } else
+        if (ant -> y >= max_y) {
         ant -> y = 0;
     }
 }
-// created a general version of visualise and advance instead of checking if each iteration the version was the basic or advanced
-//
+
 void visualise_and_advance_general(struct ant* ant, struct rule* rule) {
     /* Draw cells and ant */
-    for (int y=0; y<max_y; y++){
-        for (int x=0; x<max_x; x++){
-            mvprintw(y,x,
-                     ant_is_at(y,x)
-                     ? direction_to_s(ant->direction)
-                     : colourNames[cell_at(y,x)] //
-            );
+    for (int y=0; y < max_y; y++) {
+        for (int x=0; x < max_x; x++) {
+            mvprintw(y, x, ant_is_at(y, x)? direction_to_s(ant->direction): colourNames[cell_at(y, x)]);
         }
     }
     refresh();
@@ -57,12 +54,9 @@ void visualise_and_advance_general(struct ant* ant, struct rule* rule) {
 
 void visualise_and_advance(struct ant* ant) {
     /* Draw cells and ant */
-    for (int y=0; y<max_y; y++){
-        for (int x=0; x<max_x; x++){
-            mvprintw(y,x,
-                     ant_is_at(y,x)
-                     ? direction_to_s(ant->direction)
-                     : cell_at(y,x) ? "1": " ");
+    for (int y=0; y < max_y; y++) {
+        for (int x=0; x < max_x; x++) {
+            mvprintw(y, x, ant_is_at(y, x) ? direction_to_s(ant->direction): cell_at(y, x) ? "1": " ");
         }
     }
     refresh();
@@ -88,5 +82,5 @@ const char* direction_to_s(enum direction d) {
     return UP   == d ? "^" :
            DOWN == d ? "v" :
            LEFT == d ? "<" :
-           /* else */  ">" ;
+           ">";
 }
