@@ -8,7 +8,8 @@ struct ant {
     int y;
     enum direction direction;
 };
-// could use @out@ however I'm not too sure if allowed
+
+// noy sure if using @out@ is allowed, but it should affect testing
 struct rule {
     /*@out@*/ char* rules;
 };

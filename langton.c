@@ -67,8 +67,12 @@ void apply_rule(enum colour *colour, struct ant *ant) {
             break;
     }
 }
+// Symbols used to represent state - determined by the index w.r.t to the state
+char* colourNames[] = { " ", "A", "B", "C", "D", "E", "F", "G", "H",
+                        "I", "J", "K", "L", "M", "O", "P", "Q", "R",
+                        "S", "T", "U", "V", "W", "X", "Y", "Z", "£",
+                        "$", "%", "&", "*", ")", "(", "!", "@" };
 
-char* colourNames[] = {" ", "A", "B", "C", "D","E", "F", "G", "H", "I", "J", "K", "L", "M", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "£", "$", "%", "&", "*"};
 // list represents symbols, not the integer value of cell which uses enum.
 void apply_rule_general(enum colour *colour, struct ant *ant, struct rule *rule) {
     int rule_len;

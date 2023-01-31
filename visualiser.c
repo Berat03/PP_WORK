@@ -22,17 +22,16 @@ void start_visualisation(struct ant* ant) {
     ant->direction = RIGHT;
 }
 
+// this function implements torus topology, it determines if the ant reaches
+// hard x y limits of the screen (set)
 void cell_at_fct(struct ant *ant) {
     if (ant -> x < 0) {
         ant -> x = (max_x - 1);
-    } else
-        if (ant -> x >= max_x) {
+    } else if (ant -> x >= max_x) {
         ant -> x = 0;
-    } else
-        if (ant -> y < 0) {
+    } else if (ant -> y < 0) {
         ant -> y = (max_y - 1);
-    } else
-        if (ant -> y >= max_y) {
+    } else if (ant -> y >= max_y) {
         ant -> y = 0;
     }
 }
@@ -41,7 +40,8 @@ void visualise_and_advance_general(struct ant* ant, struct rule* rule) {
     /* Draw cells and ant */
     for (int y=0; y < max_y; y++) {
         for (int x=0; x < max_x; x++) {
-            mvprintw(y, x, ant_is_at(y, x)? direction_to_s(ant->direction): colourNames[cell_at(y, x)]);
+            mvprintw(y, x, ant_is_at(y, x)? direction_to_s(ant->direction)
+            : colourNames[cell_at(y, x)]);   // indexes the list
         }
     }
     refresh();
@@ -56,7 +56,8 @@ void visualise_and_advance(struct ant* ant) {
     /* Draw cells and ant */
     for (int y=0; y < max_y; y++) {
         for (int x=0; x < max_x; x++) {
-            mvprintw(y, x, ant_is_at(y, x) ? direction_to_s(ant->direction): cell_at(y, x) ? "1": " ");
+            mvprintw(y, x, ant_is_at(y, x) ? direction_to_s(ant->direction)
+            : cell_at(y, x) ? "1": " ");
         }
     }
     refresh();

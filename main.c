@@ -34,7 +34,7 @@ int main(/*@unused@*/ int argc, char *argv[]) {
             printf("Error: malloc() failed.\n");
             return 1;
         }
-        strcpy(general_rule.rules, argv[1]);
+        snprintf(general_rule.rules, strlen(argv[1]) + 1, "%s", argv[1]);
         struct rule * general_rule_p;
         general_rule_p = &general_rule;
 
